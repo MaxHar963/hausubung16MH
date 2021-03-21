@@ -11,18 +11,22 @@
         android:id="@+id/addGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onAddGame"
         android:text="ADD GAME" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SAVE" />
+        android:text="SAVE"
+        android:onClick="onSave"
+        />
 
     <Button
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onSearch"
         android:text="SEARCH" />
 
     <Spinner

@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 
 public class SteamBackend {
 
-    ArrayList<Game> list;
-
+    List<Game> list;
+    SimpleDateFormat sdf = new SimpleDateFormat();
     public SteamBackend() {
         list = new ArrayList<>();
     }
@@ -37,9 +37,9 @@ public class SteamBackend {
                 String[] arr = line.split(";");
                 if (!arr[0].equals("Name")) {
 
-                    Date d = new Date();
-                    d.setTime(Long.parseLong(arr[1]));
-                    list.add(new Game(arr[0], d, Double.parseDouble(arr[2])));
+                    Date date1 = new SimpleDateFormat("dd.MM.yyyy").parse(arr[1]);
+
+                    list.add(new Game(arr[0], date1, Double.parseDouble(arr[2])));
 
                 }
             }
@@ -47,7 +47,7 @@ public class SteamBackend {
         } catch (Exception e) {
 
             System.out.println("Something went wrong [LoadGames]");
-
+            e.printStackTrace();
         }
 
     }
@@ -57,8 +57,7 @@ public class SteamBackend {
         try {
             PrintWriter out = new PrintWriter(new OutputStreamWriter(fileOutputStream));
             for (Game e : list) {
-                out.println(e.getName() + ";" + e.getReleaseDate().toString() + ";" + e.getPrice());
-
+                out.println(e.getName() + ";" + new SimpleDateFormat("dd.MM.yyyy").format(e.getReleaseDate()) + ";" + e.getPrice());
             }
             out.flush();
             out.close();
@@ -107,7 +106,6 @@ public class SteamBackend {
         for (int i = 0; i < n; i++) {
             list2.add(list1.get(i));
         }
-
         return list2;
 
     }

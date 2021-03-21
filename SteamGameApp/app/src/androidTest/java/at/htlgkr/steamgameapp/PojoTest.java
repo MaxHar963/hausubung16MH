@@ -79,6 +79,8 @@ public class PojoTest {
 
         String actual = new String(outputTest.toByteArray());
 
+        System.out.println(actual + "Penis");
+
         assertEquals(GameDataCsvString.ALL_DATA_5, actual);
     }
 

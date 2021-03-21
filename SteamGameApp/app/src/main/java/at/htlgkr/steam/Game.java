@@ -1,9 +1,10 @@
 package at.htlgkr.steam;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class Game {
+public class Game implements Comparable<Game> {
     public static final String DATE_FORMAT = "dd.MM.yyyy";
 
     private String name;
@@ -48,7 +49,7 @@ public class Game {
 
     @Override
     public String toString() {
-        return "["+releaseDate.toString()+"] "+name+" "+price;
+        return "["+new SimpleDateFormat("dd.MM.yyyy").format(releaseDate)+"] "+name+" "+price;
     }
 
     @Override
@@ -62,6 +63,11 @@ public class Game {
     @Override
     public int hashCode() {
         return Objects.hash(name, releaseDate, price);
+    }
+
+    @Override
+    public int compareTo(Game game) {
+        return Double.compare(game.price,this.price);
     }
 }
 

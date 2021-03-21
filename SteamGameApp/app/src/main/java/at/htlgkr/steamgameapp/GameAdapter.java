@@ -53,5 +53,6 @@ import at.htlgkr.steam.Game;
         ((TextView) listItem.findViewById(R.id.tvDate)).setText(g.getReleaseDate().toString());
         ((TextView) listItem.findViewById(R.id.tvPrice)).setText(g.getPrice()+"");
         return listItem;
+
     }
 }
